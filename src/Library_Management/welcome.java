@@ -39,10 +39,10 @@ public class welcome extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        ext = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         min = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        ext = new javax.swing.JLabel();
         emp = new javax.swing.JButton();
         bu = new javax.swing.JButton();
         abt = new javax.swing.JButton();
@@ -79,28 +79,6 @@ public class welcome extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ext.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        ext.setText("  X");
-        ext.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                extMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                extMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                extMouseExited(evt);
-            }
-        });
-        jPanel2.add(ext, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
-
-        jPanel3.add(jPanel2);
-        jPanel2.setBounds(570, 0, 40, 40);
-
         jPanel4.setBackground(new java.awt.Color(0, 102, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,6 +102,28 @@ public class welcome extends javax.swing.JFrame {
         jPanel3.add(jPanel4);
         jPanel4.setBounds(530, 0, 40, 40);
 
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ext.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ext.setText("  X");
+        ext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                extMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                extMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                extMouseExited(evt);
+            }
+        });
+        jPanel2.add(ext, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+
+        jPanel3.add(jPanel2);
+        jPanel2.setBounds(570, 0, 40, 40);
+
         emp.setBackground(new java.awt.Color(51, 0, 153));
         emp.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         emp.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,7 +142,7 @@ public class welcome extends javax.swing.JFrame {
             }
         });
         jPanel3.add(emp);
-        emp.setBounds(200, 150, 260, 60);
+        emp.setBounds(190, 130, 260, 60);
 
         bu.setBackground(new java.awt.Color(51, 0, 153));
         bu.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -162,7 +162,7 @@ public class welcome extends javax.swing.JFrame {
             }
         });
         jPanel3.add(bu);
-        bu.setBounds(200, 240, 260, 60);
+        bu.setBounds(190, 220, 260, 60);
 
         abt.setBackground(new java.awt.Color(51, 0, 153));
         abt.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -182,9 +182,9 @@ public class welcome extends javax.swing.JFrame {
             }
         });
         jPanel3.add(abt);
-        abt.setBounds(200, 330, 260, 60);
+        abt.setBounds(190, 310, 260, 60);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\Java_Projects\\JavaPractice\\Lybrary_Management_System\\src\\images\\Untitled design.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design.jpg"))); // NOI18N
         jPanel3.add(jLabel4);
         jLabel4.setBounds(0, -10, 620, 500);
 

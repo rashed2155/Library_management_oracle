@@ -1,8 +1,20 @@
+DROP TABLE customer;
+DROP TABLE orders;
+DROP TABLE bookreturn;
+DROP TABLE booklend;
+DROP TABLE addmember;
+DROP TABLE employe;
+DROP TABLE addbook;
+DROP TABLE userr;
+
 CREATE TABLE userr(
     username VARCHAR(30),
-    password varchar(30)
+    password varchar(30),
+    PRIMARY KEY(username)
 );
-INSERT INTO userr VALUES ("rashed", "2155");
+INSERT INTO userr VALUES ('rashed', '2155');
+INSERT INTO userr VALUES ('abir', '1219');
+COMMIT;
 
 CREATE TABLE addbook(
     book_id VARCHAR(20) not null,
@@ -51,7 +63,7 @@ CREATE TABLE booklend(
     FOREIGN KEY (book_id) REFERENCES addbook(book_id) ON DELETE CASCADE
 );
 
-INSERT INTO booklend values ('RN1003','MI1000','BI1000','15-july-2020','25-july-2020');
+
 
 CREATE TABLE bookreturn(
     bid VARCHAR(30),
@@ -72,8 +84,6 @@ CREATE TABLE orders(
     quan NUMBER(10) not null,
     PRIMARY KEY (order_no)
 );
-
-INSERT INTO addbook VALUES('1', 'name', 'book_code', 'date', 'category', 'book_type', 'publisher', 'price');
 
 
 CREATE TABLE customer(

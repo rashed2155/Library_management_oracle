@@ -65,7 +65,7 @@ public class Menu_Form extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("F:\\Java_Projects\\JavaPractice\\Lybrary_Management_System\\src\\images\\logo4.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo4.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 370, 100));
 
         date.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N

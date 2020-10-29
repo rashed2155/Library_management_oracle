@@ -230,7 +230,7 @@ public class Login_Form extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 102, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\Java_Projects\\JavaPractice\\Lybrary_Management_System\\src\\images\\admin-icon-25.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin-icon-25.jpg"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 260, 230));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
