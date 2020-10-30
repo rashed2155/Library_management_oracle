@@ -11,6 +11,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -221,7 +223,7 @@ public class Borrow extends javax.swing.JInternalFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Clear");
+        jButton2.setText("Re-Issue");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton2MouseEntered(evt);
@@ -258,6 +260,11 @@ public class Borrow extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -381,7 +388,7 @@ public class Borrow extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        clear();
+        update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
@@ -403,6 +410,15 @@ public class Borrow extends javax.swing.JInternalFrame {
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         jButton1.setBackground(new Color(0,0,102));
     }//GEN-LAST:event_jButton1MouseExited
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        DefaultTableModel tmodel = (DefaultTableModel) table.getModel();
+        int selectrowindex = table.getSelectedRow();
+
+        txtrno.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+        txtmid.setText(tmodel.getValueAt(selectrowindex, 1).toString());
+        txtbid.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+    }//GEN-LAST:event_tableMouseClicked
 
     private void tablelord() {
 
@@ -434,20 +450,29 @@ public class Borrow extends javax.swing.JInternalFrame {
 
     private void update() {
 
+        String rno = txtrno.getText();
+        String mid = txtmid.getText();
+        String bid = txtbid.getText();
+        String today = issu.getText();
+        String next = ret.getText();
+        
         try {
-
-            String sql = "UPDATE addbook SET mark='1' WHERE book_id='" + txtbid.getText() + "'";
+            
+            String sql = "UPDATE booklend SET member_id='"+mid+"',book_id='"+bid+"',issue_date='"+today+"',return_date='"+next+"' WHERE record_no='"+rno+"'";
             ps = conn.prepareStatement(sql);
             ps.execute();
-
-            JOptionPane.showMessageDialog(rootPane, "Update Successfully");
+            
+            JOptionPane.showMessageDialog(rootPane, "Re-Issue Successfully");
             tablelord();
-
-        } catch (HeadlessException | SQLException e) {
-
+            
+            
+        } catch (HeadlessException | SQLException e)
+        {
             JOptionPane.showMessageDialog(rootPane, e);
-
         }
+        
+        clear();
+        autoId();
 
     }
 

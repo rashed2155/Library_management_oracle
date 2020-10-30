@@ -165,7 +165,7 @@ public class Menu_Form extends javax.swing.JFrame {
         am.setBackground(new java.awt.Color(0, 84, 140));
         am.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         am.setForeground(new java.awt.Color(255, 255, 255));
-        am.setText("Add Members");
+        am.setText("Members");
         am.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 amMouseEntered(evt);
@@ -203,7 +203,7 @@ public class Menu_Form extends javax.swing.JFrame {
         ab.setBackground(new java.awt.Color(0, 84, 140));
         ab.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         ab.setForeground(new java.awt.Color(255, 255, 255));
-        ab.setLabel("Add Book");
+        ab.setText("Books");
         ab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 abMouseEntered(evt);
