@@ -348,7 +348,7 @@ public class Borrow extends javax.swing.JInternalFrame {
             if (rs.next()) {
 
                 txtbname.setText(rs.getString("nam"));
-                txtbtype.setText(rs.getString("book_type"));
+                txtbtype.setText(rs.getString("book_type")); 
 
             } else {
                 txtbname.setText("");
