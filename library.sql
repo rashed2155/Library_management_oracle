@@ -85,6 +85,24 @@ CREATE TABLE orders(
     PRIMARY KEY (order_no)
 );
 
+CREATE TABLE complete_order(
+    order_no1 VARCHAR(30),
+    Book_Code1 VARCHAR(30),
+    book_name1 VARCHAR(30),
+    cus_nam1 VARCHAR(30),
+    cus_number1 VARCHAR(15),
+    customer_add1 VARCHAR(30),
+    quan1 NUMBER(10)
+);
+
+CREATE OR REPLACE TRIGGER completeorder
+after DELETE on orders
+for each ROW
+BEGIN
+INSERT INTO complete_order(order_no1, Book_Code1, book_name1, cus_nam1, cus_number1, customer_add1, quan1) VALUES (:old.order_no, :old.Book_Code, :old.book_name, :old.cus_nam, :old.cus_number, :old.customer_add, :old.quan);
+END;
+/
+
 
 CREATE TABLE customer(
     cus_id VARCHAR(30),
