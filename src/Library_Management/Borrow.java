@@ -370,20 +370,34 @@ public class Borrow extends javax.swing.JInternalFrame {
         String idate = issu.getText();
         String rdate = ret.getText();
 
-        try {
+        if (rno.equals("")) {
+            JOptionPane.showMessageDialog(null, "Record No. is Empty");
+        } else if (mid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Member ID is Empty");
+        } else if (bid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book ID is Empty");
+        } else if (idate.equals("")) {
+            JOptionPane.showMessageDialog(null, "Issue Date is Empty");
+        } else if (rdate.equals("")) {
+            JOptionPane.showMessageDialog(null, "Return Date is Empty");
+        } else {
+            try {
 
-            String sql = "INSERT INTO booklend(record_no, member_id, book_id, issue_date, return_date) VALUES ('" + rno + "','" + mid + "','" + bid + "','" + idate + "','" + rdate + "')";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
+                String sql = "INSERT INTO booklend(record_no, member_id, book_id, issue_date, return_date) VALUES ('" + rno + "','" + mid + "','" + bid + "','" + idate + "','" + rdate + "')";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
 
-        } catch (HeadlessException | SQLException e) {
+            } catch (HeadlessException | SQLException e) {
 
-            JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, e);
 
+            }
+            tablelord();
+            autoId();
+            clear();
         }
-        tablelord();
-        autoId();
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -396,19 +410,19 @@ public class Borrow extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(new Color(0,101,183));
+        jButton1.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setBackground(new Color(0,101,183));
+        jButton2.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(0,0,102));
+        jButton2.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_jButton2MouseExited
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(new Color(0,0,102));
+        jButton1.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_jButton1MouseExited
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -455,24 +469,34 @@ public class Borrow extends javax.swing.JInternalFrame {
         String bid = txtbid.getText();
         String today = issu.getText();
         String next = ret.getText();
-        
-        try {
-            
-            String sql = "UPDATE booklend SET member_id='"+mid+"',book_id='"+bid+"',issue_date='"+today+"',return_date='"+next+"' WHERE record_no='"+rno+"'";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            
-            JOptionPane.showMessageDialog(rootPane, "Re-Issue Successfully");
-            tablelord();
-            
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            JOptionPane.showMessageDialog(rootPane, e);
+
+        if (rno.equals("")) {
+            JOptionPane.showMessageDialog(null, "Record No. is Empty");
+        } else if (mid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Member ID is Empty");
+        } else if (bid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book ID is Empty");
+        } else if (today.equals("")) {
+            JOptionPane.showMessageDialog(null, "Issue Date is Empty");
+        } else if (next.equals("")) {
+            JOptionPane.showMessageDialog(null, "Return Date is Empty");
+        } else {
+            try {
+
+                String sql = "UPDATE booklend SET member_id='" + mid + "',book_id='" + bid + "',issue_date='" + today + "',return_date='" + next + "' WHERE record_no='" + rno + "'";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+
+                JOptionPane.showMessageDialog(rootPane, "Re-Issue Successfully");
+                tablelord();
+
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+
+            clear();
+            autoId();
         }
-        
-        clear();
-        autoId();
 
     }
 

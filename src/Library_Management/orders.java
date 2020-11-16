@@ -149,23 +149,29 @@ public class orders extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comActionPerformed
+
+        String bid = del.getText();
         
-        
-        try {
-            
-            String sql = "DELETE FROM orders WHERE order_no='"+del.getText()+"'";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            JOptionPane.showMessageDialog(rootPane, "Order Complete");
-            tablelord();
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            
-            JOptionPane.showMessageDialog(rootPane, e);
-            
+        if (bid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Nothing is Select");
+        } else {
+            try {
+
+                String sql = "DELETE FROM orders WHERE order_no='" + bid + "'";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+                JOptionPane.showMessageDialog(rootPane, "Order Complete");
+                tablelord();
+
+            } catch (HeadlessException | SQLException e) {
+
+                JOptionPane.showMessageDialog(rootPane, e);
+
+            }
+            del.setText("");
         }
-        del.setText("");
+
+
     }//GEN-LAST:event_comActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
@@ -177,15 +183,15 @@ public class orders extends javax.swing.JInternalFrame {
         int selectrowindex = table.getSelectedRow();
 
         del.setText(tmodel.getValueAt(selectrowindex, 0).toString());
-        
+
     }//GEN-LAST:event_tableMouseClicked
 
     private void comMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comMouseEntered
-        com.setBackground(new Color(0,101,183));
+        com.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_comMouseEntered
 
     private void comMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comMouseExited
-        com.setBackground(new Color(0,0,102));
+        com.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_comMouseExited
 
 

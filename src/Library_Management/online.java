@@ -24,6 +24,7 @@ public class online extends javax.swing.JFrame {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+
     public online() {
         initComponents();
         conn = My_CNX.getConnection();
@@ -249,35 +250,51 @@ public class online extends javax.swing.JFrame {
         String nub = nu.getText();
         String ad = addr.getText();
         String sel = select.getSelectedItem().toString();
-        
-        try{
-            String sql="INSERT INTO orders(order_no, book_code, book_name, cus_nam, cus_number, customer_add, quan) VALUES (?,?,?,?,?,?,?)";
-            PreparedStatement pst= conn.prepareStatement(sql);
-            pst.setString(1, id);
-            pst.setString(2, bcd);
-            pst.setString(3, bnm);
-            pst.setString(4, ynm);
-            pst.setString(5, nub);
-            pst.setString(6, ad);
-            pst.setString(7, sel);
-            pst.execute();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Order");
+
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (bcd.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book Code is Empty");
+        } else if (bnm.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book Name is Empty");
+        } else if (ynm.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (nub.equals("")) {
+            JOptionPane.showMessageDialog(null, "Number is Empty");
+        } else if (ad.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+        } else if (sel.equals("")) {
+            JOptionPane.showMessageDialog(null, "select is Empty");
+        } else {
+            try {
+                String sql = "INSERT INTO orders(order_no, book_code, book_name, cus_nam, cus_number, customer_add, quan) VALUES (?,?,?,?,?,?,?)";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, id);
+                pst.setString(2, bcd);
+                pst.setString(3, bnm);
+                pst.setString(4, ynm);
+                pst.setString(5, nub);
+                pst.setString(6, ad);
+                pst.setString(7, sel);
+                pst.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Order");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+            clearFild();
+            tablelord();
+            autoId();
         }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
-        clearFild();
-        tablelord();
-        autoId();
-        
+
+
     }//GEN-LAST:event_orderActionPerformed
 
     private void orderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseEntered
-        order.setBackground(new Color(0,101,183));
+        order.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_orderMouseEntered
 
     private void orderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseExited
-        order.setBackground(new Color(0,51,102));
+        order.setBackground(new Color(0, 51, 102));
     }//GEN-LAST:event_orderMouseExited
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -286,10 +303,9 @@ public class online extends javax.swing.JFrame {
 
         bcode.setText(tmodel.getValueAt(selectrowindex, 0).toString());
         bname.setText(tmodel.getValueAt(selectrowindex, 1).toString());
-        
+
     }//GEN-LAST:event_tableMouseClicked
 
-    
     private void autoId() {
         try {
 
@@ -318,8 +334,7 @@ public class online extends javax.swing.JFrame {
         }
 
     }
-    
-    
+
     private void tablelord() {
 
         try {
@@ -336,10 +351,10 @@ public class online extends javax.swing.JFrame {
         }
 
     }
-    
+
     private void clearFild() {
 
-      //  mid.setText("");
+        //  mid.setText("");
         bname.setText("");
         bcode.setText("");
         select.setSelectedIndex(0);
@@ -347,10 +362,7 @@ public class online extends javax.swing.JFrame {
         name.setText("");
         nu.setText("");
     }
-    
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea addr;

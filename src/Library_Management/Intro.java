@@ -59,7 +59,7 @@ public class Intro extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(0, 102, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\Java_Projects\\JavaPractice\\Lybrary_Management_System\\src\\images\\rashed.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rashed.jpg"))); // NOI18N
         jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 320, 300));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -129,7 +129,7 @@ public class Intro extends javax.swing.JFrame {
     private void extMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extMouseClicked
         
 JOptionPane.showMessageDialog(rootPane, "Thanks for contact with me..");
-        Login_Form form = new Login_Form();
+        dashboard form = new dashboard();
         form.setVisible(true);
         form.pack();
         form.setLocationRelativeTo(null);

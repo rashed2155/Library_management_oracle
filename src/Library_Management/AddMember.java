@@ -278,22 +278,41 @@ public class AddMember extends javax.swing.JInternalFrame {
         String contac = no.getText();
         String typ = type.getSelectedItem().toString();
 
-        try {
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (uname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (date.equals("")) {
+            JOptionPane.showMessageDialog(null, "D.O.B is Empty");
+        } else if (gen.equals("")) {
+            JOptionPane.showMessageDialog(null, "Gender is Empty");
+        } else if (add.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+        } else if (email.equals("")) {
+            JOptionPane.showMessageDialog(null, "E-mail is Empty");
+        } else if (contac.equals("")) {
+            JOptionPane.showMessageDialog(null, "Contact is Empty");
+        } else if (typ.equals("")) {
+            JOptionPane.showMessageDialog(null, "Member Type is Empty");
+        } else {
+            try {
 
-            String sql = "INSERT INTO addmember(mid, nam, student_id, birthday, gender, addres, email, contact, typ) VALUES ('" + id + "','" + uname + "','" + nic + "','" + date + "','" + gen + "','" + add + "','" + email + "','" + contac + "','" + typ + "')";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
+                String sql = "INSERT INTO addmember(mid, nam, student_id, birthday, gender, addres, email, contact, typ) VALUES ('" + id + "','" + uname + "','" + nic + "','" + date + "','" + gen + "','" + add + "','" + email + "','" + contac + "','" + typ + "')";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
+                clearFild();
+
+            } catch (HeadlessException | SQLException e) {
+
+                JOptionPane.showMessageDialog(rootPane, e);
+
+            }
             clearFild();
-
-        } catch (HeadlessException | SQLException e) {
-
-            JOptionPane.showMessageDialog(rootPane, e);
-
+            autoId();
+            tablelord();
         }
-        clearFild();
-        autoId();
-        tablelord();
+
 
     }//GEN-LAST:event_addActionPerformed
 
@@ -315,7 +334,7 @@ public class AddMember extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableMouseClicked
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
+
         String id = mid.getText();
         String uname = name.getText();
         String nic = nid.getText();
@@ -325,42 +344,59 @@ public class AddMember extends javax.swing.JInternalFrame {
         String email = mail.getText();
         String contac = no.getText();
         String typep = type.getSelectedItem().toString();
-        
-        try {
-            
-            String sql = "UPDATE addmember SET nam='"+uname+"',student_id='"+nic+"',birthday='"+date+"',gender='"+gen+"',addres='"+addr+"',email='"+email+"',contact='"+contac+"',typ='"+typep+"' WHERE mid='"+id+"'";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            
-            JOptionPane.showMessageDialog(rootPane, "Update Successfully");
-            tablelord();
-            clearFild();
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            JOptionPane.showMessageDialog(rootPane, e);
+
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (uname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (date.equals("")) {
+            JOptionPane.showMessageDialog(null, "D.O.B is Empty");
+        } else if (gen.equals("")) {
+            JOptionPane.showMessageDialog(null, "Gender is Empty");
+        } else if (add.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+        } else if (email.equals("")) {
+            JOptionPane.showMessageDialog(null, "E-mail is Empty");
+        } else if (contac.equals("")) {
+            JOptionPane.showMessageDialog(null, "Contact is Empty");
+        } else if (typep.equals("")) {
+            JOptionPane.showMessageDialog(null, "Member Type is Empty");
+        } else {
+            try {
+
+                String sql = "UPDATE addmember SET nam='" + uname + "',student_id='" + nic + "',birthday='" + date + "',gender='" + gen + "',addres='" + addr + "',email='" + email + "',contact='" + contac + "',typ='" + typep + "' WHERE mid='" + id + "'";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+
+                JOptionPane.showMessageDialog(rootPane, "Update Successfully");
+                tablelord();
+                clearFild();
+
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
         }
-        
+
+
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        
+
         try {
-            
-            String sql = "DELETE FROM addmember WHERE mid='"+mid.getText()+"'";
+
+            String sql = "DELETE FROM addmember WHERE mid='" + mid.getText() + "'";
             ps = conn.prepareStatement(sql);
             ps.execute();
             JOptionPane.showMessageDialog(rootPane, "Delete Successfully");
             tablelord();
             clearFild();
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            
+
+        } catch (HeadlessException | SQLException e) {
+
             JOptionPane.showMessageDialog(rootPane, e);
-            
+
         }
-        
+
     }//GEN-LAST:event_deleteActionPerformed
 
     private void genderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderActionPerformed
@@ -368,32 +404,32 @@ public class AddMember extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_genderActionPerformed
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(new Color(0,101,183));
+        add.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_addMouseEntered
 
     private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
-        update.setBackground(new Color(0,101,183));
+        update.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_updateMouseEntered
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
-        delete.setBackground(new Color(0,101,183));
+        delete.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_deleteMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(new Color(0,0,102));
+        add.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_addMouseExited
 
     private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
-        update.setBackground(new Color(0,0,102));
+        update.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_updateMouseExited
 
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
-        delete.setBackground(new Color(0,0,102));
+        delete.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_deleteMouseExited
 
     private void tablelord() {
 
-        try {   
+        try {
 
             String sql = "SELECT mid, nam, student_id, birthday, gender, addres, email, contact, typ FROM addmember";
             ps = conn.prepareStatement(sql);

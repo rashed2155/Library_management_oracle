@@ -264,30 +264,47 @@ public class AddBook extends javax.swing.JInternalFrame {
         String publisher = pub.getText();
         String price = pric.getText();
 
-        try {
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (nam.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (bcode.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book Code is Empty");
+        } else if (day.equals("")) {
+            JOptionPane.showMessageDialog(null, "Date is Empty");
+        } else if (ctg.equals("")) {
+            JOptionPane.showMessageDialog(null, "Category is Empty");
+        } else if (type.equals("")) {
+            JOptionPane.showMessageDialog(null, "Type is Empty");
+        } else if (publisher.equals("")) {
+            JOptionPane.showMessageDialog(null, "Publisher is Empty");
+        } else if (price.equals("")) {
+            JOptionPane.showMessageDialog(null, "Price is Empty");
+        } else {
+            try {
 
-            String sql = "INSERT INTO addbook(book_id, nam, book_code, dat, category, book_type, publisher, price) VALUES (?,?,?,?,?,?,?,?)";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, nam);
-            ps.setString(3, bcode);
-            ps.setString(4, day);
-            ps.setString(5, ctg);
-            ps.setString(6, type);
-            ps.setString(7, publisher);
-            ps.setString(8, price);
-            ps.execute();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
+                String sql = "INSERT INTO addbook(book_id, nam, book_code, dat, category, book_type, publisher, price) VALUES (?,?,?,?,?,?,?,?)";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, id);
+                ps.setString(2, nam);
+                ps.setString(3, bcode);
+                ps.setString(4, day);
+                ps.setString(5, ctg);
+                ps.setString(6, type);
+                ps.setString(7, publisher);
+                ps.setString(8, price);
+                ps.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
 
-        } catch (HeadlessException | SQLException e) {
+            } catch (HeadlessException | SQLException e) {
 
-            JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, e);
 
+            }
+            clear_Fild();
+            tablelord();
+            autoId();
         }
-        clear_Fild();
-        tablelord();
-        autoId();
-        
 
 
     }//GEN-LAST:event_addActionPerformed
@@ -304,58 +321,74 @@ public class AddBook extends javax.swing.JInternalFrame {
         pub.setText(tmodel.getValueAt(selectrowindex, 6).toString());
         pric.setText(tmodel.getValueAt(selectrowindex, 7).toString());
         typ.setSelectedItem(tmodel.getValueAt(selectrowindex, 5).toString());
-        
+
     }//GEN-LAST:event_tableMouseClicked
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
+
         String id = txtid.getText();
         String nam = name.getText();
         String bcode = code.getText();
         String day = ((JTextField) date.getDateEditor().getUiComponent()).getText();
-        String ctg = cat.getSelectedItem().toString();      
+        String ctg = cat.getSelectedItem().toString();
         String type = typ.getSelectedItem().toString();
         String publisher = pub.getText();
         String price = pric.getText();
-        
-        try {
-            
-            String sql = "UPDATE addbook SET nam='"+nam+"',book_code='"+bcode+"',dat='"+day+"',category='"+ctg+"',book_type='"+type+"',publisher='"+publisher+"',price='"+price+"' WHERE book_id='"+id+"'";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            
-            JOptionPane.showMessageDialog(rootPane, "Update Successfully");
-            tablelord();
-            
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            JOptionPane.showMessageDialog(rootPane, e);
+
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (nam.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (bcode.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book Code is Empty");
+        } else if (day.equals("")) {
+            JOptionPane.showMessageDialog(null, "Date is Empty");
+        } else if (ctg.equals("")) {
+            JOptionPane.showMessageDialog(null, "Category is Empty");
+        } else if (type.equals("")) {
+            JOptionPane.showMessageDialog(null, "Type is Empty");
+        } else if (publisher.equals("")) {
+            JOptionPane.showMessageDialog(null, "Publisher is Empty");
+        } else if (price.equals("")) {
+            JOptionPane.showMessageDialog(null, "Price is Empty");
+        } else {
+            try {
+
+                String sql = "UPDATE addbook SET nam='" + nam + "',book_code='" + bcode + "',dat='" + day + "',category='" + ctg + "',book_type='" + type + "',publisher='" + publisher + "',price='" + price + "' WHERE book_id='" + id + "'";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+
+                JOptionPane.showMessageDialog(rootPane, "Update Successfully");
+                tablelord();
+
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+
+            clear_Fild();
+            autoId();
         }
-        
-        clear_Fild();
-        autoId();
-        
+
+
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-              
+
         try {
-            
-            String sql = "DELETE FROM addbook WHERE book_id='"+txtid.getText()+"'";
+
+            String sql = "DELETE FROM addbook WHERE book_id='" + txtid.getText() + "'";
             ps = conn.prepareStatement(sql);
             ps.execute();
             JOptionPane.showMessageDialog(rootPane, "Delete Successfully");
             tablelord();
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            
+
+        } catch (HeadlessException | SQLException e) {
+
             JOptionPane.showMessageDialog(rootPane, e);
-            
+
         }
         clear_Fild();
-        
+
     }//GEN-LAST:event_deleteActionPerformed
 
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
@@ -363,27 +396,27 @@ public class AddBook extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtidActionPerformed
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(new Color(0,101,183));
+        add.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_addMouseEntered
 
     private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
-        update.setBackground(new Color(0,101,183));
+        update.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_updateMouseEntered
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
-        delete.setBackground(new Color(0,101,183));
+        delete.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_deleteMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(new Color(0,0,102));
+        add.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_addMouseExited
 
     private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
-        update.setBackground(new Color(0,0,102));
+        update.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_updateMouseExited
 
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
-        delete.setBackground(new Color(0,0,102));
+        delete.setBackground(new Color(0, 0, 102));
     }//GEN-LAST:event_deleteMouseExited
 
     private void tablelord() {
@@ -431,10 +464,10 @@ public class AddBook extends javax.swing.JInternalFrame {
         }
 
     }
-    
+
     private void clear_Fild() {
 
-      //  mid.setText("");
+        //  mid.setText("");
         txtid.setText("");
         name.setText("");
         ((JTextField) date.getDateEditor().getUiComponent()).setText("");
@@ -445,8 +478,7 @@ public class AddBook extends javax.swing.JInternalFrame {
         typ.setSelectedIndex(0);
 
     }
-    
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

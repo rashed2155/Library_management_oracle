@@ -222,9 +222,9 @@ public class Return extends javax.swing.JInternalFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 txtmid.setText(rs.getString("member_id"));
-                String return_date = rs.getString("return_date");
+                String re_date = rs.getString("return_date");
                 LocalDate today = LocalDate.now();
-                LocalDate reday = LocalDate.parse(return_date);
+                LocalDate reday = LocalDate.parse(re_date);
 
                 Long day_gap = ChronoUnit.DAYS.between(reday, today);
                 if (day_gap > 0) {
@@ -251,18 +251,30 @@ public class Return extends javax.swing.JInternalFrame {
         String ldate = txtlateday.getText();
         String fine = txtfine.getText();
 
-        try {
+        if (mid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Member ID is Empty");
+        } else if (bid.equals("")) {
+            JOptionPane.showMessageDialog(null, "Book ID is Empty");
+        } else if (ldate.equals("")) {
+            JOptionPane.showMessageDialog(null, "Return Date is Empty");
+        } else if (fine.equals("")) {
+            JOptionPane.showMessageDialog(null, "Fine is Empty");
+        } else {
+            try {
 
-            String sql = "INSERT INTO bookreturn(bid, member_id, late_days, fine) VALUES ('" + bid + "','" + mid + "','" + ldate + "','" + fine + "')";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            bill();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Return");
+                String sql = "INSERT INTO bookreturn(bid, member_id, late_days, fine) VALUES ('" + bid + "','" + mid + "','" + ldate + "','" + fine + "')";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+                bill();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Return");
 
-        } catch (HeadlessException | SQLException e) {
+            } catch (HeadlessException | SQLException e) {
 
-            JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+
         }
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -272,19 +284,19 @@ public class Return extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2KeyReleased
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setBackground(new Color(0,101,183));
+        jButton2.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(0,0,51));
+        jButton2.setBackground(new Color(0, 0, 51));
     }//GEN-LAST:event_jButton2MouseExited
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(new Color(0,0,255));
+        jButton1.setBackground(new Color(0, 0, 255));
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(new Color(0,101,183));
+        jButton1.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void update() {

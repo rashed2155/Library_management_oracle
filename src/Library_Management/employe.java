@@ -230,28 +230,45 @@ public class employe extends javax.swing.JInternalFrame {
         String dob = ((JTextField) bday.getDateEditor().getUiComponent()).getText();
         String stat = sel.getSelectedItem().toString();
 
-        try {
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (num.equals("")) {
+            JOptionPane.showMessageDialog(null, "Number is Empty");
+        } else if (typ.equals("")) {
+            JOptionPane.showMessageDialog(null, "Type is Empty");
+        } else if (add.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+        } else if (dob.equals("")) {
+            JOptionPane.showMessageDialog(null, "D.O.B is Empty");
+        } else if (stat.equals("")) {
+            JOptionPane.showMessageDialog(null, "Status is Empty");
+        } else {
+            try {
 
-            String sql = "INSERT INTO employe(emp_id, emp_name, emp_num, emp_typ, emp_add, dob, stats) VALUES (?,?,?,?,?,?,?)";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, name);
-            ps.setString(3, num);
-            ps.setString(4, typ);
-            ps.setString(5, add);
-            ps.setString(6, dob);
-            ps.setString(7, stat);
-            ps.execute();
-            JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
+                String sql = "INSERT INTO employe(emp_id, emp_name, emp_num, emp_typ, emp_add, dob, stats) VALUES (?,?,?,?,?,?,?)";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, id);
+                ps.setString(2, name);
+                ps.setString(3, num);
+                ps.setString(4, typ);
+                ps.setString(5, add);
+                ps.setString(6, dob);
+                ps.setString(7, stat);
+                ps.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Insert");
 
-        } catch (HeadlessException | SQLException e) {
+            } catch (HeadlessException | SQLException e) {
 
-            JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, e);
 
+            }
+            autoId();
+            clearFild();
+            tablelord();
         }
-        autoId();
-        clearFild();
-        tablelord();
+
 
     }//GEN-LAST:event_addActionPerformed
 
@@ -296,24 +313,40 @@ public class employe extends javax.swing.JInternalFrame {
         String nub = nu.getText();
         String typ = sel1.getSelectedItem().toString();
         String addr = ad.getText();
-        String date = ((JTextField) bday.getDateEditor().getUiComponent()).getText();       
+        String date = ((JTextField) bday.getDateEditor().getUiComponent()).getText();
         String stat = sel.getSelectedItem().toString();
-        
-         try {
-            
-            String sql = "UPDATE employe SET emp_name='"+name+"',emp_num='"+nub+"',emp_typ='"+typ+"',emp_add='"+addr+"',dob='"+date+"',stats='"+stat+"' WHERE emp_id='"+id+"'";
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-            
-            JOptionPane.showMessageDialog(rootPane, "Update Successfully");
-            tablelord();
-            clearFild();
-            
-        } catch (HeadlessException | SQLException e)
-        {
-            JOptionPane.showMessageDialog(rootPane, e);
+
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(null, "ID is Empty");
+        } else if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is Empty");
+        } else if (nub.equals("")) {
+            JOptionPane.showMessageDialog(null, "Number is Empty");
+        } else if (typ.equals("")) {
+            JOptionPane.showMessageDialog(null, "Type is Empty");
+        } else if (addr.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+        } else if (date.equals("")) {
+            JOptionPane.showMessageDialog(null, "D.O.B is Empty");
+        } else if (stat.equals("")) {
+            JOptionPane.showMessageDialog(null, "Status is Empty");
+        } else {
+            try {
+
+                String sql = "UPDATE employe SET emp_name='" + name + "',emp_num='" + nub + "',emp_typ='" + typ + "',emp_add='" + addr + "',dob='" + date + "',stats='" + stat + "' WHERE emp_id='" + id + "'";
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+
+                JOptionPane.showMessageDialog(rootPane, "Update Successfully");
+                tablelord();
+                clearFild();
+
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
         }
-        
+
+
     }//GEN-LAST:event_add1ActionPerformed
 
     private void tablelord() {
@@ -332,7 +365,7 @@ public class employe extends javax.swing.JInternalFrame {
         }
 
     }
-    
+
     private void autoId() {
         try {
 
@@ -361,10 +394,10 @@ public class employe extends javax.swing.JInternalFrame {
         }
 
     }
-    
+
     private void clearFild() {
 
-      //  mid.setText("");
+        //  mid.setText("");
         na.setText("");
         nu.setText("");
         sel.setSelectedIndex(0);

@@ -430,7 +430,7 @@ public class Login_Form extends javax.swing.JFrame {
 
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(rootPane, "Wellcome to our E-Library");
-                    Menu_Form form = new Menu_Form();
+                    dashboard form = new dashboard();
                     form.setVisible(true);
                     form.pack();
                     form.setLocationRelativeTo(null);
