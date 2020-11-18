@@ -279,7 +279,7 @@ public class Menu_Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void blActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blActionPerformed
-        
+
         home.removeAll();
         Borrow br = new Borrow();
         home.add(br).setVisible(true);
@@ -293,7 +293,7 @@ public class Menu_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_brActionPerformed
 
     private void amActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amActionPerformed
-        
+
         home.removeAll();
         AddMember br = new AddMember();
         home.add(br).setVisible(true);
@@ -319,7 +319,7 @@ public class Menu_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        
+
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void extMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extMouseEntered
@@ -335,47 +335,51 @@ public class Menu_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_extMouseExited
 
     private void extMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extMouseClicked
-        System.exit(0);
+        dashboard form = new dashboard();
+        form.setVisible(true);
+        form.pack();
+        form.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_extMouseClicked
 
     private void blMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_blMouseEntered
-        bl.setBackground(new Color(0,101,183));
+        bl.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_blMouseEntered
 
     private void blMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_blMouseExited
-        bl.setBackground(new Color(0,84,140));
+        bl.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_blMouseExited
 
     private void brMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brMouseEntered
-        br.setBackground(new Color(0,101,183));
+        br.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_brMouseEntered
 
     private void amMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amMouseEntered
-        am.setBackground(new Color(0,101,183));
+        am.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_amMouseEntered
 
     private void abMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abMouseEntered
-        ab.setBackground(new Color(0,101,183));
+        ab.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_abMouseEntered
 
     private void brMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brMouseExited
-        br.setBackground(new Color(0,84,140));
+        br.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_brMouseExited
 
     private void amMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amMouseExited
-        am.setBackground(new Color(0,84,140));
+        am.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_amMouseExited
 
     private void abMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abMouseExited
-        ab.setBackground(new Color(0,84,140));
+        ab.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_abMouseExited
 
     private void orMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orMouseEntered
-        or.setBackground(new Color(0,101,183));
+        or.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_orMouseEntered
 
     private void orMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orMouseExited
-        or.setBackground(new Color(0,84,140));
+        or.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_orMouseExited
 
     private void orActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orActionPerformed
@@ -385,19 +389,19 @@ public class Menu_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_orActionPerformed
 
     private void outMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outMouseExited
-        out.setBackground(new Color(255,0,51));
+        out.setBackground(new Color(255, 0, 51));
     }//GEN-LAST:event_outMouseExited
 
     private void outMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outMouseEntered
-        out.setBackground(new Color(255,69,0));
+        out.setBackground(new Color(255, 69, 0));
     }//GEN-LAST:event_outMouseEntered
 
     private void emMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emMouseEntered
-        em.setBackground(new Color(0,101,183));
+        em.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_emMouseEntered
 
     private void emMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emMouseExited
-        em.setBackground(new Color(0,84,140));
+        em.setBackground(new Color(0, 84, 140));
     }//GEN-LAST:event_emMouseExited
 
     private void emActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emActionPerformed
@@ -405,7 +409,7 @@ public class Menu_Form extends javax.swing.JFrame {
         employe em = new employe();
         home.add(em).setVisible(true);
     }//GEN-LAST:event_emActionPerformed
-    
+
     public void clock() {
         Thread clock = new Thread() {
             public void run() {
@@ -415,14 +419,14 @@ public class Menu_Form extends javax.swing.JFrame {
                         int day = cal.get(Calendar.DAY_OF_MONTH);
                         int month = cal.get(Calendar.MONTH) + 1;
                         int year = cal.get(Calendar.YEAR);
-                        
+
                         int second = cal.get(Calendar.SECOND);
                         int minute = cal.get(Calendar.MINUTE);
                         int hour = cal.get(Calendar.HOUR);
-                        
+
                         time.setText(hour + ":" + minute + ":" + second);
                         date.setText(day + ":" + month + ":" + year);
-                        
+
                         sleep(1000);
                     }
                 } catch (Exception e) {
