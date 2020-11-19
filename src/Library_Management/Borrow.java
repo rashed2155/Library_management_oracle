@@ -432,6 +432,51 @@ public class Borrow extends javax.swing.JInternalFrame {
         txtrno.setText(tmodel.getValueAt(selectrowindex, 0).toString());
         txtmid.setText(tmodel.getValueAt(selectrowindex, 1).toString());
         txtbid.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+
+        try {
+
+            String sql = "SELECT nam, book_type FROM addbook WHERE book_id='" + txtbid.getText() + "'";
+
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+
+                txtbname.setText(rs.getString("nam"));
+                txtbtype.setText(rs.getString("book_type"));
+
+            } else {
+                txtbname.setText("");
+                txtbtype.setText("");
+            }
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(rootPane, e);
+
+        }
+
+        try {
+
+            String sql = "SELECT nam, typ FROM addmember WHERE mid='" + txtmid.getText() + "'";
+
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+
+                txtname.setText(rs.getString("nam"));
+                txttype.setText(rs.getString("typ"));
+
+            } else {
+                txtname.setText("");
+                txttype.setText("");
+            }
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(rootPane, e);
+
+        }
+
     }//GEN-LAST:event_tableMouseClicked
 
     private void tablelord() {

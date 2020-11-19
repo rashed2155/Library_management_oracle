@@ -51,11 +51,11 @@ public class Return extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtfine = new javax.swing.JTextField();
         txtbid = new javax.swing.JTextField();
         txtmid = new javax.swing.JTextField();
         txtlateday = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         bill = new javax.swing.JTextArea();
@@ -96,7 +96,7 @@ public class Return extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Fine");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 90, 40));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 90, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,14 +108,9 @@ public class Return extends javax.swing.JInternalFrame {
         jLabel3.setText("Member ID");
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Late Days");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 40));
-
         txtfine.setEditable(false);
         txtfine.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 210, 40));
+        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 210, 40));
 
         txtbid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtbid.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -127,17 +122,28 @@ public class Return extends javax.swing.JInternalFrame {
 
         txtmid.setEditable(false);
         txtmid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtmid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmidKeyReleased(evt);
+            }
+        });
         jPanel5.add(txtmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 210, 40));
 
         txtlateday.setEditable(false);
         txtlateday.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, 40));
+        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 40));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Late Days");
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 120, 40));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 430, 450));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bill.setEditable(false);
         bill.setColumns(20);
         bill.setRows(5);
         jScrollPane1.setViewportView(bill);
@@ -232,9 +238,10 @@ public class Return extends javax.swing.JInternalFrame {
 
                     long fine = 10 * day_gap;
                     txtfine.setText(String.valueOf(fine));
+                } else {
+                    txtlateday.setText("0");
+                    txtfine.setText("0");
                 }
-                txtlateday.setText("0");
-                txtfine.setText("0");
 
             }
 
@@ -299,6 +306,10 @@ public class Return extends javax.swing.JInternalFrame {
         jButton1.setBackground(new Color(0, 101, 183));
     }//GEN-LAST:event_jButton1MouseEntered
 
+    private void txtmidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmidKeyReleased
+        
+    }//GEN-LAST:event_txtmidKeyReleased
+
     private void update() {
 
         try {
@@ -338,8 +349,8 @@ public class Return extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
