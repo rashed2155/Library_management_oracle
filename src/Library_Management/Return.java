@@ -98,7 +98,7 @@ public class Return extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Fine");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 90, 40));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 90, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,9 +112,8 @@ public class Return extends javax.swing.JInternalFrame {
 
         txtfine.setEditable(false);
         txtfine.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 210, 40));
+        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 210, 40));
 
-        txtbid.setEditable(false);
         txtbid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtbid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -123,7 +122,6 @@ public class Return extends javax.swing.JInternalFrame {
         });
         jPanel5.add(txtbid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 210, 40));
 
-        txtmid.setEditable(false);
         txtmid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtmid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -134,18 +132,19 @@ public class Return extends javax.swing.JInternalFrame {
 
         txtlateday.setEditable(false);
         txtlateday.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 210, 40));
+        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 210, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Late Days");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 120, 40));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 120, 40));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Book ID");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 40));
 
+        rno.setEditable(false);
         rno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -159,6 +158,7 @@ public class Return extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bill.setEditable(false);
         bill.setColumns(20);
         bill.setRows(5);
         jScrollPane1.setViewportView(bill);
@@ -231,7 +231,34 @@ public class Return extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtbidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbidKeyReleased
+try {
 
+            String sql = "select member_id, record_no, return_date from booklend where book_id= '" + txtbid.getText() + "'";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rno.setText(rs.getString("record_no"));
+                txtmid.setText(rs.getString("member_id"));
+                String re_date = rs.getString("return_date");
+                LocalDate today = LocalDate.now();
+                LocalDate reday = LocalDate.parse(re_date);
+
+                Long day_gap = ChronoUnit.DAYS.between(reday, today);
+                if (day_gap > 0) {
+                    txtlateday.setText(day_gap.toString());
+
+                    long fine = 10 * day_gap;
+                    txtfine.setText(String.valueOf(fine));
+                } else {
+                    txtlateday.setText("0");
+                    txtfine.setText("0");
+                }
+
+            }
+
+        } catch (SQLException e) {
+
+        }
     }//GEN-LAST:event_txtbidKeyReleased
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
@@ -243,7 +270,34 @@ public class Return extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void txtmidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmidKeyReleased
-       
+try {
+
+            String sql = "select book_id, record_no, return_date from booklend where member_id= '" + txtmid.getText() + "'";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rno.setText(rs.getString("record_no"));
+                txtbid.setText(rs.getString("book_id"));
+                String re_date = rs.getString("return_date");
+                LocalDate today = LocalDate.now();
+                LocalDate reday = LocalDate.parse(re_date);
+
+                Long day_gap = ChronoUnit.DAYS.between(reday, today);
+                if (day_gap > 0) {
+                    txtlateday.setText(day_gap.toString());
+
+                    long fine = 10 * day_gap;
+                    txtfine.setText(String.valueOf(fine));
+                } else {
+                    txtlateday.setText("0");
+                    txtfine.setText("0");
+                }
+
+            }
+
+        } catch (SQLException e) {
+
+        }       
     }//GEN-LAST:event_txtmidKeyReleased
 
     private void rnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rnoKeyReleased
