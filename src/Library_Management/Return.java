@@ -254,6 +254,11 @@ try {
                     txtfine.setText("0");
                 }
 
+            }else {
+                rno.setText("");
+                txtmid.setText("");
+                txtlateday.setText("");
+                txtfine.setText("");
             }
 
         } catch (SQLException e) {
@@ -293,6 +298,11 @@ try {
                     txtfine.setText("0");
                 }
 
+            }else {
+                rno.setText("");
+                txtbid.setText("");
+                txtlateday.setText("");
+                txtfine.setText("");
             }
 
         } catch (SQLException e) {
