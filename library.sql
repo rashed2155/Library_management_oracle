@@ -66,13 +66,23 @@ CREATE TABLE booklend(
 
 
 CREATE TABLE bookreturn(
-    bid VARCHAR(30),
+    rno VARCHAR(30),
     member_id VARCHAR(30),
-    late_days VARCHAR(30),
-    fine VARCHAR(30),
+    bid VARCHAR(30),
+    issue_date VARCHAR(30),
+    return_date VARCHAR(30),
     FOREIGN KEY (member_id) REFERENCES addmember(mid) ON DELETE CASCADE,
     FOREIGN KEY (bid) REFERENCES addbook(book_id) ON DELETE CASCADE
 );
+
+
+CREATE OR REPLACE TRIGGER bookreturn
+after DELETE on booklend
+for each ROW
+BEGIN
+INSERT INTO bookreturn(rno, member_id, bid, issue_date, return_date) VALUES (:old.record_no, :old.member_id, :old.book_id, :old.issue_date, :old.return_date);
+END;
+/
 
 CREATE TABLE orders(
     order_no VARCHAR(30) not null,

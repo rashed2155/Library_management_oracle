@@ -56,12 +56,14 @@ public class Return extends javax.swing.JInternalFrame {
         txtmid = new javax.swing.JTextField();
         txtlateday = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        rno = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         bill = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1110, 730));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,29 +98,30 @@ public class Return extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Fine");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 90, 40));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 90, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Book ID");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 120, 40));
+        jLabel2.setText("R. NO");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Member ID");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 140, 40));
 
         txtfine.setEditable(false);
         txtfine.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 210, 40));
+        jPanel5.add(txtfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 210, 40));
 
+        txtbid.setEditable(false);
         txtbid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtbid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbidKeyReleased(evt);
             }
         });
-        jPanel5.add(txtbid, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 210, 40));
+        jPanel5.add(txtbid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 210, 40));
 
         txtmid.setEditable(false);
         txtmid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -127,23 +130,35 @@ public class Return extends javax.swing.JInternalFrame {
                 txtmidKeyReleased(evt);
             }
         });
-        jPanel5.add(txtmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 210, 40));
+        jPanel5.add(txtmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 210, 40));
 
         txtlateday.setEditable(false);
         txtlateday.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 40));
+        jPanel5.add(txtlateday, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 210, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Late Days");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 120, 40));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 120, 40));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Book ID");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 40));
+
+        rno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        rno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rnoKeyReleased(evt);
+            }
+        });
+        jPanel5.add(rno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 40));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 430, 450));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bill.setEditable(false);
         bill.setColumns(20);
         bill.setRows(5);
         jScrollPane1.setViewportView(bill);
@@ -171,34 +186,30 @@ public class Return extends javax.swing.JInternalFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 560, 350, 60));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 51));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Return");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButton2KeyReleased(evt);
-            }
-        });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 430, 60));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Book ID");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 30));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 51));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Return");
+        jButton3.setActionCommand("jButton2");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 430, 60));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 650));
 
@@ -221,12 +232,28 @@ public class Return extends javax.swing.JInternalFrame {
 
     private void txtbidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbidKeyReleased
 
+    }//GEN-LAST:event_txtbidKeyReleased
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setBackground(new Color(0, 0, 255));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setBackground(new Color(0, 101, 183));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void txtmidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmidKeyReleased
+       
+    }//GEN-LAST:event_txtmidKeyReleased
+
+    private void rnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rnoKeyReleased
         try {
 
-            String sql = "SELECT member_id,return_date FROM booklend WHERE book_id='" + txtbid.getText() + "'";
+            String sql = "select member_id, book_id, return_date from booklend where record_no= '" + rno.getText() + "'";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {
+                txtbid.setText(rs.getString("book_id"));
                 txtmid.setText(rs.getString("member_id"));
                 String re_date = rs.getString("return_date");
                 LocalDate today = LocalDate.now();
@@ -248,11 +275,18 @@ public class Return extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
 
         }
+    }//GEN-LAST:event_rnoKeyReleased
 
-    }//GEN-LAST:event_txtbidKeyReleased
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton3.setBackground(new Color(0, 101, 183));
+    }//GEN-LAST:event_jButton3MouseEntered
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        jButton3.setBackground(new Color(0, 0, 51));
 
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String bid = txtbid.getText();
         String mid = txtmid.getText();
         String ldate = txtlateday.getText();
@@ -269,7 +303,7 @@ public class Return extends javax.swing.JInternalFrame {
         } else {
             try {
 
-                String sql = "INSERT INTO bookreturn(bid, member_id, late_days, fine) VALUES ('" + bid + "','" + mid + "','" + ldate + "','" + fine + "')";
+                String sql = "delete from booklend where record_no='"+ rno.getText() +"'";
                 ps = conn.prepareStatement(sql);
                 ps.execute();
                 bill();
@@ -279,36 +313,8 @@ public class Return extends javax.swing.JInternalFrame {
 
                 JOptionPane.showMessageDialog(rootPane, e);
             }
-
         }
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyReleased
-
-
-    }//GEN-LAST:event_jButton2KeyReleased
-
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setBackground(new Color(0, 101, 183));
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(0, 0, 51));
-    }//GEN-LAST:event_jButton2MouseExited
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(new Color(0, 0, 255));
-    }//GEN-LAST:event_jButton1MouseExited
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(new Color(0, 101, 183));
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void txtmidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmidKeyReleased
-        
-    }//GEN-LAST:event_txtmidKeyReleased
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void update() {
 
@@ -329,14 +335,14 @@ public class Return extends javax.swing.JInternalFrame {
 
     private void bill() {
 
-        bill.setText("================================" + "\n"
-                + "\tE-Library" + "\n"
-                + "================================" + "\n\n"
-                + "Member ID\t" + txtmid.getText() + "\n"
-                + "Book ID\t" + txtbid.getText() + "\n"
-                + "No Of Date\t" + txtlateday.getText() + "\n"
-                + "Amount\t" + txtfine.getText() + "\n\n"
-                + "================================");
+        bill.setText("==============================================" + "\n"
+                + "\t                E-Library" + "\n"
+                + "==============================================" + "\n\n"
+                + "\tMember ID\t" + txtmid.getText() + "\n"
+                + "\tBook ID\t" + txtbid.getText() + "\n"
+                + "\tNo Of Date\t" + txtlateday.getText() + "\n"
+                + "\tAmount\t" + txtfine.getText() + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "==============================================");
 
     }
 
@@ -344,11 +350,12 @@ public class Return extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea bill;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -358,6 +365,7 @@ public class Return extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField rno;
     private javax.swing.JTextField txtbid;
     private javax.swing.JTextField txtfine;
     private javax.swing.JTextField txtlateday;
