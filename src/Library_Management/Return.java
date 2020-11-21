@@ -404,9 +404,10 @@ try {
                 + "==============================================" + "\n\n"
                 + "\tMember ID\t" + txtmid.getText() + "\n"
                 + "\tBook ID\t" + txtbid.getText() + "\n"
-                + "\tNo Of Date\t" + txtlateday.getText() + "\n"
-                + "\tAmount\t" + txtfine.getText() + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                + "==============================================");
+                + "\tLate Days\t" + txtlateday.getText() + "\n"
+                + "\tFine\t" + txtfine.getText() + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "==============================================\n"
+                +"\t               Thank You\t");
 
     }
 

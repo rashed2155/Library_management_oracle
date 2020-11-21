@@ -129,7 +129,7 @@ public class online extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 80, 40));
 
         select.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        select.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4" }));
+        select.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         jPanel1.add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, 90, 30));
 
         order.setBackground(new java.awt.Color(0, 51, 102));
