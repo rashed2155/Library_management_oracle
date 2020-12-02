@@ -129,7 +129,7 @@ public class Intro extends javax.swing.JFrame {
     private void extMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extMouseClicked
         
 JOptionPane.showMessageDialog(rootPane, "Thanks for contact with me..");
-        dashboard form = new dashboard();
+        Login_Form form = new Login_Form();
         form.setVisible(true);
         form.pack();
         form.setLocationRelativeTo(null);
