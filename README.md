@@ -13,4 +13,6 @@ import drivers from driver folder.
 4th step:
 connect the database using ojdbc7.jar
 
+login => username = rashed, password = 2155;
+
 Enjoy...!!!
