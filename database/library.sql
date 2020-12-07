@@ -6,6 +6,7 @@ DROP TABLE addmember;
 DROP TABLE employe;
 DROP TABLE addbook;
 DROP TABLE userr;
+DROP TABLE complete_order;
 
 CREATE TABLE userr(
     username VARCHAR(30),
